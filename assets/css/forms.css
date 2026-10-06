@@ -1,0 +1,32 @@
+/* Forms page (reuses .bk-hero from booking.css) */
+.fm{position:relative;z-index:5;margin-top:-40px;padding-bottom:100px}
+.fm-note{display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:var(--radius);padding:24px 28px;box-shadow:0 24px 60px rgba(37,33,91,.12);margin-bottom:36px}
+.fm-note .i{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--sun-soft)}
+.fm-note p{color:var(--ink-2)}
+.fm-note b{color:var(--ink)}
+.fm-list{display:grid;gap:22px}
+.fm-card{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;border-radius:var(--radius);padding:30px;transition:transform .5s var(--ease)}
+.fm-card:hover{transform:translateY(-4px)}
+.fm-card.c1{background:var(--sky-soft)}
+.fm-card.c2{background:var(--mint-soft)}
+.fm-card.c3{background:var(--petal-soft)}
+.fm-card .ico{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;background:#fff}
+.fm-card h3{font-size:1.35rem;margin-bottom:4px}
+.fm-card .code{display:inline-block;padding:4px 12px;border-radius:999px;background:#fff;font-weight:800;font-size:.8rem;color:var(--ink-2);margin-bottom:10px}
+.fm-card p{font-size:1rem;color:var(--ink-2)}
+.fm-card ul{margin:10px 0 0 18px;color:var(--ink-2);font-size:.95rem;display:grid;gap:4px}
+.fm-act{display:grid;gap:12px}
+.fm-act .btn{justify-content:center;white-space:nowrap}
+.fm-steps{margin-top:56px}
+.fm-steps ol{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+.fm-steps li{counter-increment:s;background:#fff;border-radius:var(--radius);padding:28px;box-shadow:0 12px 30px rgba(37,33,91,.08)}
+.fm-steps li::before{content:counter(s);display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;font:400 1.2rem var(--display);margin-bottom:14px}
+.fm-steps h3{font-size:1.15rem;margin-bottom:6px}
+.fm-steps p{color:var(--ink-2);font-size:.98rem}
+
+@media (max-width:860px){
+  .fm-card{grid-template-columns:1fr;gap:16px}
+  .fm-act{grid-template-columns:1fr 1fr}
+  .fm-steps ol{grid-template-columns:1fr}
+}
+@media (max-width:480px){.fm-act{grid-template-columns:1fr}.fm-card{padding:24px}}

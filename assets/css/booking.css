@@ -1,0 +1,67 @@
+/* Booking page */
+.bk-hero{background:radial-gradient(120% 120% at 85% 0%,#4B3FA0,#2C2878 50%,var(--night));color:#fff;padding:140px 0 110px;position:relative;overflow:hidden}
+.bk-hero .stars{position:absolute;inset:0}
+.bk-hero .wrap{position:relative;z-index:2}
+.bk-hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);margin-bottom:14px}
+.bk-hero p{color:#E4DFFF;font-size:1.15rem}
+.bk-hero .wave svg{height:70px}
+.bk{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;margin-top:-40px;position:relative;z-index:5;padding-bottom:100px}
+.panel{background:#fff;border-radius:var(--radius);padding:34px;box-shadow:0 24px 60px rgba(37,33,91,.12)}
+.panel h2{font-size:1.5rem;margin-bottom:6px}
+.panel .sub{color:var(--ink-2);font-size:.98rem;margin-bottom:20px}
+.step+.step{margin-top:34px;padding-top:30px;border-top:2px dashed #E3DEFA}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.svc button{text-align:left;padding:16px;border-radius:20px;border:2px solid #E3DEFA;background:var(--paper);font:inherit;color:var(--ink);cursor:pointer;transition:.3s var(--ease)}
+.svc button b{display:block;font-family:var(--display);font-weight:400;font-size:1.1rem}
+.svc button small{color:var(--ink-2);display:block;line-height:1.35;margin-top:4px}
+.svc button:hover{transform:translateY(-3px);border-color:var(--grape)}
+.svc button[aria-pressed=true]{background:var(--sun-soft);border-color:var(--sun);box-shadow:0 6px 0 #E3A912}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.cal-head h3{font-size:1.3rem}
+.cal-nav{display:flex;gap:8px}
+.cal-nav button{width:42px;height:42px;border-radius:50%;border:0;background:var(--lilac);cursor:pointer;font-size:1.1rem;color:var(--ink);transition:.25s}
+.cal-nav button:hover:not(:disabled){background:var(--grape);color:#fff}
+.cal-nav button:disabled{opacity:.35;cursor:not-allowed}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.cal .dow{font-weight:800;font-size:.85rem;color:var(--ink-2);padding:6px 0}
+.cal button,.cal span.e{aspect-ratio:1;border-radius:16px;border:0;font:700 1rem var(--body);color:var(--ink);background:transparent}
+.cal button{cursor:pointer;background:var(--paper);transition:.25s var(--ease)}
+.cal button:hover:not(:disabled){background:var(--mint-soft);transform:scale(1.08)}
+.cal button:disabled{opacity:.3;cursor:not-allowed;background:transparent}
+.cal button.today{box-shadow:inset 0 0 0 2px var(--sky)}
+.cal button[aria-pressed=true]{background:var(--ink);color:#fff;transform:scale(1.08)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.slots button{padding:12px;border-radius:999px;border:2px solid #E3DEFA;background:var(--paper);font:700 .98rem var(--body);color:var(--ink);cursor:pointer;transition:.25s var(--ease)}
+.slots button:hover:not(:disabled){border-color:var(--mint);background:var(--mint-soft)}
+.slots button:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.slots button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.empty{padding:22px;border-radius:20px;background:var(--lilac);color:var(--ink-2)}
+.side{position:sticky;top:90px;align-self:start}
+.sum{list-style:none;display:grid;gap:12px;margin:6px 0 22px;padding:18px;border-radius:20px;background:var(--lilac)}
+.sum li{display:flex;justify-content:space-between;gap:12px;font-size:.98rem}
+.sum b{text-align:right}
+.sum .none{color:var(--ink-2);font-weight:400}
+.fine{font-size:.88rem;color:var(--ink-2);margin-top:14px}
+
+/* Confirmation */
+.ok{position:fixed;inset:0;z-index:800;background:rgba(26,23,71,.72);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .4s}
+.ok.show{opacity:1;pointer-events:auto}
+.ok-card{background:#fff;border-radius:34px;padding:42px 36px;max-width:480px;width:100%;text-align:center;transform:scale(.85) translateY(30px);transition:transform .6s var(--ease)}
+.ok.show .ok-card{transform:none}
+.tick{width:92px;height:92px;margin:0 auto 18px}
+.tick circle{fill:var(--mint);transform-origin:center;transform:scale(0)}
+.tick path{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60}
+.ok.show .tick circle{animation:pop .6s .2s var(--ease) forwards}
+.ok.show .tick path{animation:draw2 .5s .7s ease forwards}
+@keyframes draw2{to{stroke-dashoffset:0}}
+.ok-card h2{margin-bottom:10px}
+.ok-card p{margin:0 auto 20px}
+.ok-actions{display:grid;gap:12px;margin-top:8px}
+.ok-actions .btn{justify-content:center}
+
+@media (max-width:960px){
+  .bk{grid-template-columns:1fr}
+  .side{position:static}
+  .svc{grid-template-columns:1fr}
+}
+@media (max-width:520px){.panel{padding:24px}.cal{gap:4px}}

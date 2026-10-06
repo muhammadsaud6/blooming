@@ -1,0 +1,133 @@
+/* Blooming Stars — extra motion layer (loaded after style.css on every public page) */
+
+/* Page fade in / out */
+body{animation:pageIn .6s ease both}
+html.leaving body{opacity:0;transition:opacity .3s ease}
+@keyframes pageIn{from{opacity:0}}
+
+/* Scroll progress bar */
+.progress{position:fixed;left:0;top:0;height:4px;width:100%;z-index:60;transform-origin:left;transform:scaleX(0);pointer-events:none;
+  background:linear-gradient(90deg,var(--petal),var(--sun),var(--mint),var(--sky))}
+
+/* Nav entrance */
+.ready .nav .brand{animation:dropIn .8s var(--ease) backwards}
+.ready .menu li{animation:dropIn .7s var(--ease) backwards}
+.ready .menu li:nth-child(1){animation-delay:.08s}.ready .menu li:nth-child(2){animation-delay:.14s}
+.ready .menu li:nth-child(3){animation-delay:.2s}.ready .menu li:nth-child(4){animation-delay:.26s}
+.ready .menu li:nth-child(5){animation-delay:.32s}.ready .menu li:nth-child(6){animation-delay:.38s}
+@keyframes dropIn{from{opacity:0;transform:translateY(-24px)}}
+.brand img{transition:transform .9s var(--ease)}
+.brand:hover img{transform:rotate(360deg) scale(1.08)}
+@media (max-width:960px){
+  .ready .menu li{animation:none}
+  .menu.open li{animation:rise .45s var(--ease) backwards}
+  .menu.open li:nth-child(2){animation-delay:.05s}.menu.open li:nth-child(3){animation-delay:.1s}
+  .menu.open li:nth-child(4){animation-delay:.15s}.menu.open li:nth-child(5){animation-delay:.2s}.menu.open li:nth-child(6){animation-delay:.25s}
+}
+
+/* Buttons: shine sweep + bouncy press */
+.btn{overflow:hidden}
+.btn:not(.floating-booking){position:relative}
+.btn::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);transition:left .75s var(--ease)}
+.btn:hover::after{left:135%}
+.floating-booking{animation:ringPulse 2.6s ease-out infinite}
+.floating-booking:hover{animation:none}
+@keyframes ringPulse{
+  0%{box-shadow:0 8px 0 #E3A912,0 0 0 0 rgba(247,185,31,.55)}
+  70%,100%{box-shadow:0 8px 0 #E3A912,0 0 0 20px rgba(247,185,31,0)}
+}
+
+/* Hero extras */
+.hero .wrap,.hero-art{will-change:transform}
+.wave svg{transform-origin:bottom;animation:waveBob 5s ease-in-out infinite alternate}
+@keyframes waveBob{to{transform:scaleY(1.25)}}
+.bk-hero h1{animation:rise .9s .1s var(--ease) backwards}
+.bk-hero p{animation:rise .9s .3s var(--ease) backwards}
+.facts li{transition:transform .35s var(--ease),background .35s}
+.facts li:hover{transform:translateY(-4px) scale(1.04);background:rgba(255,255,255,.2)}
+
+/* Reveal variants (JS adds these) */
+.rv.rv-l{transform:translateX(-70px)}
+.rv.rv-r{transform:translateX(70px)}
+.rv.rv-z{transform:scale(.86) translateY(24px)}
+.rv.rv-f{transform:perspective(900px) rotateX(18deg) translateY(40px)}
+.rv.in{transform:none}
+.rv.settled{transition-delay:0s!important}
+
+/* Word-by-word headings */
+.split .w{display:inline-block;opacity:0;transform:translateY(.55em) rotate(5deg);
+  transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i) * 70ms + .1s)}
+.split.in .w{opacity:1;transform:none}
+
+/* Kicker shimmer */
+.kicker{background-image:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%);
+  background-size:250% 100%;background-repeat:no-repeat;animation:shimmer 4s ease-in-out infinite}
+@keyframes shimmer{from{background-position:150% 0}to{background-position:-60% 0}}
+
+/* About */
+.about-card .dot{animation:float 6s ease-in-out infinite}
+.about-card .dot.b{animation-duration:4.5s;animation-delay:-1s}
+.about-card .dot.c{animation-duration:3.6s;animation-delay:-2s}
+.stat b{transition:transform .4s var(--ease)}
+.stat:hover b{transform:scale(1.1) rotate(-3deg)}
+
+/* Gallery */
+.photo-card img{transition:transform 1.4s var(--ease),filter .6s}
+.photo-card.rv img{transform:scale(1.25);filter:saturate(.4)}
+.photo-card.rv.in img{transform:scale(1);filter:none}
+.photo-card.rv.in:hover img{transform:scale(1.08)}
+.photo-card figcaption{transition:color .3s,letter-spacing .4s var(--ease)}
+.photo-card:hover figcaption{color:var(--sun);letter-spacing:.02em}
+
+/* Cards & icons */
+.card .ico,.fm-card .ico,.info-list .i{transition:transform .6s var(--ease)}
+.card:hover .ico,.fm-card:hover .ico{transform:rotate(-12deg) scale(1.15)}
+.info-list li:hover .i{transform:scale(1.15) rotate(8deg)}
+.card .tag{animation:bob 3s ease-in-out infinite}
+.fm-card .ico svg,.card .ico svg{animation:wiggle 5s ease-in-out infinite}
+@keyframes wiggle{0%,86%,100%{transform:none}90%{transform:rotate(-14deg)}94%{transform:rotate(12deg)}}
+.tilt{transform-style:preserve-3d}
+
+/* Why */
+.why-item svg{animation:float 4s ease-in-out infinite}
+.why-item:nth-child(2) svg{animation-delay:-.7s}.why-item:nth-child(3) svg{animation-delay:-1.4s}
+.why-item:nth-child(4) svg{animation-delay:-2.1s}.why-item:nth-child(5) svg{animation-delay:-2.8s}.why-item:nth-child(6) svg{animation-delay:-3.5s}
+.why-item:hover svg{animation:spinPop .8s var(--ease)}
+@keyframes spinPop{50%{transform:scale(1.3) rotate(15deg)}}
+
+/* CTA: moving gradient + bubbles */
+.cta{position:relative;overflow:hidden;background-size:220% 220%;animation:gradMove 9s ease-in-out infinite alternate}
+@keyframes gradMove{to{background-position:100% 50%}}
+.cta::before,.cta::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.22);pointer-events:none}
+.cta::before{width:180px;height:180px;left:6%;top:-60px;animation:float 7s ease-in-out infinite}
+.cta::after{width:110px;height:110px;right:8%;bottom:-30px;animation:float 5s ease-in-out infinite reverse}
+.cta .wrap{position:relative;z-index:1}
+
+/* Contact form fields */
+.form.in .field,.form.in > .btn,.form.in h3{animation:rise .6s var(--ease) backwards}
+.form.in h3{animation-delay:.15s}
+.form.in .field:nth-of-type(1),.form.in .row2{animation-delay:.25s}
+.form.in .field:nth-of-type(2){animation-delay:.33s}.form.in .field:nth-of-type(3){animation-delay:.41s}
+.form.in .field:nth-of-type(4){animation-delay:.49s}.form.in > .btn{animation-delay:.6s}
+.field label{transition:color .25s,transform .25s var(--ease)}
+.field:focus-within label{color:var(--grape);transform:translateX(4px)}
+
+/* Booking widgets: stagger when a new month / day is shown */
+.stagger > button{animation:popIn .45s var(--ease) backwards;animation-delay:calc(var(--i,0) * 16ms)}
+.cal button[aria-pressed=true],.slots button[aria-pressed=true],.svc button[aria-pressed=true]{animation:pressPop .45s var(--ease)}
+@keyframes popIn{from{opacity:0;transform:scale(.6)}}
+@keyframes pressPop{40%{transform:scale(1.18)}}
+
+/* Footer */
+.foot a{display:inline-block;transition:transform .3s var(--ease),color .3s}
+.foot a:hover{transform:translateX(6px)}
+
+/* Click sparkle */
+.spark{position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:1000;animation:spark .7s var(--ease) forwards}
+@keyframes spark{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  .split .w,.photo-card.rv img{opacity:1;transform:none;filter:none}
+  .progress,.spark{display:none}
+}
